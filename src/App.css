@@ -39,6 +39,7 @@
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   background: #0a0a0a;
   user-select: none;
+  position: relative;
 }
 
 .vibe-indicator:hover {
@@ -152,6 +153,136 @@
   color: #8b5cf6;
   font-weight: 500;
   letter-spacing: 0.05em;
+}
+
+/* Flow Mode - Effet WOW */
+.container.flow-active {
+  background: radial-gradient(ellipse at center, rgba(99, 102, 241, 0.1) 0%, transparent 70%);
+}
+
+.flow-particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.flow-particles::before,
+.flow-particles::after {
+  content: '';
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  animation: float-particle 8s ease-in-out infinite;
+}
+
+.flow-particles::before {
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.3) 0%, transparent 70%);
+  top: 20%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.flow-particles::after {
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.25) 0%, transparent 70%);
+  bottom: 20%;
+  right: 10%;
+  animation-delay: -4s;
+}
+
+@keyframes float-particle {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.5;
+  }
+  25% {
+    transform: translate(30px, -30px) scale(1.1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translate(-20px, 20px) scale(0.9);
+    opacity: 0.6;
+  }
+  75% {
+    transform: translate(10px, 30px) scale(1.05);
+    opacity: 0.7;
+  }
+}
+
+.title-glow {
+  animation: title-pulse 2s ease-in-out infinite;
+  text-shadow: 0 0 20px rgba(99, 102, 241, 0.5),
+               0 0 40px rgba(139, 92, 246, 0.3),
+               0 0 60px rgba(168, 85, 247, 0.2);
+}
+
+@keyframes title-pulse {
+  0%, 100% {
+    text-shadow: 0 0 20px rgba(99, 102, 241, 0.5),
+                 0 0 40px rgba(139, 92, 246, 0.3),
+                 0 0 60px rgba(168, 85, 247, 0.2);
+  }
+  50% {
+    text-shadow: 0 0 30px rgba(99, 102, 241, 0.8),
+                 0 0 60px rgba(139, 92, 246, 0.5),
+                 0 0 90px rgba(168, 85, 247, 0.3);
+  }
+}
+
+.vibe-indicator.flow-mode {
+  animation: flow-glow 3s ease-in-out infinite, ring-rotate 20s linear infinite;
+}
+
+.vibe-indicator.flow-mode::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    transparent,
+    rgba(99, 102, 241, 0.4),
+    rgba(139, 92, 246, 0.4),
+    rgba(168, 85, 247, 0.4),
+    transparent
+  );
+  animation: ring-spin 4s linear infinite;
+  z-index: -1;
+}
+
+@keyframes flow-glow {
+  0%, 100% {
+    filter: brightness(1);
+  }
+  50% {
+    filter: brightness(1.2);
+  }
+}
+
+@keyframes ring-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes ring-rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* Responsive */

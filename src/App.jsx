@@ -62,19 +62,21 @@ function App() {
     setShowQuote(true)
 
     setTimeout(() => setIsAnimating(false), 300)
-    setTimeout(() => setShowQuote(false), 3000)
+    setTimeout(() => setShowQuote(false), 7000)
   }
 
   const currentVibe = vibeStates[vibeLevel]
   const progress = (vibeLevel / (vibeStates.length - 1)) * 100
+  const isFlowMode = vibeLevel >= 1
 
   return (
-    <main className="container">
+    <main className={`container ${isFlowMode ? 'flow-active' : ''}`}>
+      {isFlowMode && <div className="flow-particles" />}
       <div className="content">
-        <h1 className="title">VIBECODING</h1>
+        <h1 className={`title ${isFlowMode ? 'title-glow' : ''}`}>VIBECODING</h1>
 
         <div
-          className={`vibe-indicator ${isAnimating ? 'pulse' : ''}`}
+          className={`vibe-indicator ${isAnimating ? 'pulse' : ''} ${isFlowMode ? 'flow-mode' : ''}`}
           onClick={handleVibeClick}
           style={{
             borderColor: currentVibe.color,
