@@ -1,0 +1,187 @@
+.container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+  max-width: 500px;
+  text-align: center;
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: 800;
+  letter-spacing: 0.3em;
+  color: #fff;
+  margin: 0;
+}
+
+/* Vibe Indicator - Le truc qui claque */
+.vibe-indicator {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  border: 3px solid #333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: #0a0a0a;
+  user-select: none;
+}
+
+.vibe-indicator:hover {
+  transform: scale(1.05);
+}
+
+.vibe-indicator:active {
+  transform: scale(0.95);
+}
+
+.vibe-indicator.pulse {
+  animation: pulse-animation 0.3s ease-out;
+}
+
+@keyframes pulse-animation {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+.vibe-label {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  transition: color 0.3s ease;
+}
+
+.vibe-progress {
+  width: 80%;
+  height: 4px;
+  background: #222;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.vibe-progress-fill {
+  height: 100%;
+  border-radius: 2px;
+  transition: width 0.3s ease, background 0.3s ease;
+}
+
+.vibe-hint {
+  font-size: 0.7rem;
+  color: #444;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+
+/* Rick Rubin Quote */
+.quote-container {
+  opacity: 0;
+  transform: translateY(20px) scale(0.95);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+  min-height: 140px;
+  width: 100%;
+  max-width: 420px;
+}
+
+.quote-container.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+.rick-rubin {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 1.5rem 2rem;
+  background: linear-gradient(135deg, #1a1a1a 0%, #111 100%);
+  border-radius: 20px;
+  border: 1px solid #2a2a2a;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+.rick-avatar {
+  width: 80px;
+  height: 80px;
+  min-width: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #8b5cf6;
+  box-shadow: 0 4px 20px rgba(139, 92, 246, 0.4);
+}
+
+.quote-content {
+  text-align: left;
+  flex: 1;
+}
+
+.quote-text {
+  font-size: 1.1rem;
+  font-style: italic;
+  color: #e0e0e0;
+  line-height: 1.5;
+  margin: 0 0 0.75rem 0;
+  font-weight: 400;
+}
+
+.quote-author {
+  font-size: 0.85rem;
+  color: #8b5cf6;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+/* Tagline */
+.tagline {
+  font-size: 1rem;
+  color: #8b5cf6;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+  .title {
+    font-size: 2rem;
+    letter-spacing: 0.2em;
+  }
+
+  .vibe-indicator {
+    width: 160px;
+    height: 160px;
+  }
+
+  .vibe-label {
+    font-size: 1.2rem;
+  }
+
+  .rick-rubin {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 1.5rem;
+  }
+
+  .quote-content {
+    text-align: center;
+  }
+
+  .quote-text {
+    font-size: 1rem;
+  }
+}
